@@ -22,11 +22,13 @@ A path was found: **2,810 steps**, exploring 580,831 of the 640,000 cells in the
 |---|---|
 | ![unsolved](images/maze_unsolved.png) | ![solved](images/maze_solution_path.png) |
 
-## Design notes / what was fixed from the first draft
+## Design notes
 
-An earlier version of this script had the open-space/wall condition inverted (treating the 94%-majority background as walls and the thin printed maze lines as open space), which meant the search space was almost entirely blocked and no path could ever be found. Fixing that required first inspecting the actual matrix values against the rendered image, rather than assuming the encoding — a reminder that with any binary image-to-matrix conversion, it's worth explicitly verifying which value means what before writing logic on top of it.
-
-The BFS itself was also rewritten to use a preallocated integer array as the queue instead of an R list with `queue[[length(queue)+1]]` / `queue[-1]` operations — the latter reallocates the entire list on every dequeue, which doesn't scale to an 800×800 (640,000-cell) search space.
+The initial open-space/wall encoding was inverted, which silently blocked the entire search space. 
+Fixing it required verifying the matrix values against the rendered image rather than assuming the 
+encoding — worth doing explicitly on any binary image-to-matrix conversion. The BFS also uses a 
+preallocated integer array instead of a growing R list, since list-based queues don't scale to an 
+800×800 (640,000-cell) search space.
 
 ## Setup
 
