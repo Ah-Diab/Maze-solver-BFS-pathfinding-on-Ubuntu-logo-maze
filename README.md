@@ -2,7 +2,7 @@
 
 A breadth-first search (BFS) pathfinding project in R: extracts a maze pattern from an Ubuntu wallpaper image and solves it programmatically, finding a path from outside the maze to the Ubuntu logo hidden at its center.
 
-Course project — Basic R Programming, SGH Warsaw School of Economics, 1st semester.
+Course project — Basic R Programming, SGH Warsaw School of Economics.
 
 ## Status
 
